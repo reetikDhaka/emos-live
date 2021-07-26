@@ -1,0 +1,48 @@
+{%extends 'admin-panel/dashboard.html'%}
+{%block content%}
+<div id="layoutSidenav_content">
+    <div class="container">
+        <div class="row justify-content-between greet-row">
+            <div class="col-md-4 greetings-col">
+              <h4 class="greetings text-secondary"></h4>
+            </div>
+          <div class="col-md-2 date-col" >
+              <h4 class="text-secondary">Today</h4>
+              <h5 class="date text-secondary"></h5>
+          </div>
+        </div>
+       <h4 class="text-secondary"> Assigned Tasks</h4>
+        <div class="row">
+            {%for task in tasks%}
+            <div class="card col-md-4">
+           <div class="card-header">{{task.employee}}</div>
+           <div class="card-body" >
+               <b>Given Task:</b>
+               {{task.task_assignment}}
+                <br>
+                <b>Task Report:</b>
+                {%if task.task_status %}
+                {{task.task_status}}
+                {%else%}
+                Not submitted
+                {%endif%}
+                <br>
+                <b>Task Completed:</b>
+                {%if task.task_completed%}
+                <i class="fa fa-check" style="color:blue;"></i>
+                {%else%}
+                <i class="fa fa-times" style="color: red;"></i>
+
+                {%endif%}
+               </div>
+            </div>
+            {%endfor%}
+        </div>
+        <a href="{%url 'assign-tasks-page'%}" style="text-decoration:none;">Assign New Tasks</a>
+    </div>
+   
+</div>
+{%load static%}
+<script src="{%static 'js/userpage.js'%}"></script>
+
+{%endblock%}

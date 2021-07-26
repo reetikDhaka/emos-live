@@ -1,0 +1,30 @@
+h1.title{
+    display: block;
+}
+.form-control{
+    margin-bottom: 2%;
+}
+
+.container-of-reg{
+    display: flex;   
+    margin:10%;
+    padding:1%;     
+    background-color: oldlace;
+    border-radius: 20px;
+}
+@media only screen and (max-width: 600px)  {
+    h1.title{
+        display: none;
+    }
+    .form-group{
+        width: 80%;
+        margin:auto;
+        flex:1;
+    }
+    
+}
+
+.error,.errormail,.errorphone{
+    font-size: small;
+    color: red;
+}

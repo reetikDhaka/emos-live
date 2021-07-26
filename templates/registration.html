@@ -1,0 +1,83 @@
+{%extends 'base.html'%}
+{%block navbar%}
+{%endblock%}
+
+{%block content%}
+{%load static%}
+<link href="{%static 'css/regpage.css'%}" rel="stylesheet" type="text/css">
+<body class="bg-primary">
+<div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header"><h3 class="text-center font-weight-light my-4">Employee Registration</h3></div>
+                            <div class="card-body">
+                                <form method="POST">
+                                    {%csrf_token%}
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                {{form.Name}}
+                                                <label for="inputFirstName">Name</label>
+                                                <div class="error">     
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                {{form.Phone}}
+                                                <label for="inputLastName">Number</label>
+                                                <div class="errorphone">     
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        {{form.Email}}
+                                        <label for="inputEmail">Email address</label>
+                                        <div class="errormail">  
+                                        </div>
+                                    </div>
+                                    <label class="label">Gender</label>
+                                    {{form.Gender}}
+                                    <label class="label" style="margin-left:1%;">Department</label>
+                                        {{form.Department}}
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0">
+                                                {{form.Address}}
+                                                <label class="label">Address</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="mt-4 mb-0">
+                                        <input type="submit" class="btn btn-primary" style="width: 100%;" value="Register">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card" style="background-color:#0d6efd!important; padding: 1%;">
+                                <div class="small"><a href="{%url 'login-page'%}" style="color: aliceblue; text-decoration: none;">Go to Login Page</a></div>
+                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+     
+        {%for message in messages%}
+        {{message}}
+        {%endfor%}
+    </div>
+</div>
+</body>
+<script src="{%static 'js/regScript.js'%}"></script>
+<script>
+
+</script>
+{%endblock%}
+{%block footer%}
+{%endblock%}

@@ -1,0 +1,29 @@
+{%extends 'user-panel/dashboard.html'%}
+{%block content%}
+<div id="layoutSidenav_content">
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <th>Date</th>
+                <th>Attendance</th>
+            </thead>
+            <tbody>
+                {%for attendance in attendances%}
+                <tr>
+                    <td>{{attendance.date}}</td>
+                    {%if attendance.attendance in 'Present'%}
+                    <td style="color:green">{{attendance.attendance}}</td>
+                    {%else%}
+                    <td style="color: red;">{{attendance.attendance}}</td>
+
+                {%endif%}
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{%load static%}
+<script src="{%static 'js/datatables-simple-demo.js'%}"></script>
+{%endblock%}

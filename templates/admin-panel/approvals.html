@@ -1,0 +1,92 @@
+{%extends 'admin-panel/dashboard.html'%}
+
+{%block content%}
+{%load static%}
+<link href="{%static 'css/approvals-style.css'%}" type="text/css" rel="stylesheet">
+<style>
+    .card{
+        position: absolute;
+        top:100px;
+        right: 0;
+        left: 0;
+    }
+  
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div id="layoutSidenav_content">
+    <div class="container">
+        <h1 class="title-page">Pending Approvals</h1>
+        <table class="table table-bordered">
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Department</th>
+            
+        <tbody>
+            <tr>
+                {%for employee in emp%}
+                {%if not employee.apporoved_Status%}
+                <td>{{employee.Name}}</td>
+                <td>{{employee.Phone}}</td>
+                <td>{{employee.Department}}</td> 
+                <td><button class="btn btn-warning approve" id="approvebtn">Approve</button> <a class="btn btn-info view-app">View Application</a></td>
+            </tr>
+                <div class="confirm-modal" id="confirmation" >
+                    <div class="modal-content" >
+                        <h4 class="confirm-head">Please confirm that you want to approve <a class="employee-name" href="#">{{employee.Name}}</a> employee</h4>
+                        
+                            <div class="containerBtn">
+                                <button data-action= "approve" data-empid="{{employee.id}}"class="btn btn-success approveEmp" style="background-color:rgb(31, 201, 116); ">Yes</button>
+                                <button class="btn btn-danger close" style="background-color: crimson; ">Go back</button>
+                            </div>
+                    </div>
+                </div>
+           
+                <!--application modal-->
+                <div class="application-modal" id="application" >
+                    <div class="modal-content application"> 
+                        <span style="font-size: xx-large; cursor: pointer;" class="close-app">&times;</span>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img class="profile-image" src="{%static 'images/profile.png'%}">
+                            </div>
+                            <div class="col-md-8">
+                            <h4 class="employee">{{employee.Name}}</h4>
+                            <p><b>Contact Number</b>:{{employee.Phone}}</p>
+                            <p><b>Department</b>:{{employee.Department}}</p>
+                            <p><b>Email</b>:{{employee.Email}}</p>
+                            <p><b>Gender</b>:{{employee.Gender}}</p>
+                            <p><b>Address</b>:{{employee.Address}}</p>
+                            <p><b>IP Address</b>:{{employee.ip_address}}</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                {%endif%}
+            
+            {%endfor%}
+        </tbody>
+        </table>
+     
+</div>
+
+<script src="{%static 'js/approval.js'%}"></script>
+<script>
+    function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getToken('csrftoken');
+    </script>
+{%endblock%}

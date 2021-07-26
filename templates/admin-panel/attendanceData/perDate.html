@@ -1,0 +1,52 @@
+{%extends 'admin-panel/dashboard.html'%}
+{%block content%}
+<div id="layoutSidenav_content">
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Login Time</th>
+                    <th>Logout Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for i in attendance%}
+                <tr>
+                    <td>{{i.employee.employee.Name}}</td>
+                    <td>{{i.employee.employee.Department}}</td>
+                    <!--for blank login if absent-->
+                    {%if i.login_time is not None%}
+                    <td>{{i.login_time}}</td>
+                    {%else%}
+                    <td></td>
+                    {%endif%}
+                    {%if i.logout_time is None%}
+                    <td></td>
+                    {%else%}
+                    <td>{{i.logout_time}}</td>
+                    {%endif%}
+                    {%if i.attendance is None%}
+                    <td></td>
+                    {%else%}
+                    {%if i.attendance in 'Present' %}
+                     <td style="color: green;">{{i.attendance}}</td>
+                     {%else%}
+                     <td style="color:red;">{{i.attendance}}</td>
+                     {%endif%}
+                     {%endif%}
+                </tr>
+                {%endfor%}
+            </tbody>
+           
+        </table>
+    </div>
+
+    {%for message in messages%}
+{{message}}
+{%endfor%}
+</div>
+
+{%endblock%}

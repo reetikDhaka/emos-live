@@ -1,0 +1,26 @@
+from django.urls import path
+from .views import *
+urlpatterns = [
+    path('', home_page, name='home-page'),
+    path('login',login_page,name='login-page'),
+    path('logout',logout_page,name='logout-page'),
+    path('registration',registration_page,name='registration-page'),
+    path('dashboard',dashboard_view,name='dashboard-page'),
+    path('dashboard/pending-approvals',pending_approvals,name="pending-approvals-page"),
+    path('dashboard/employees-data',employees_data_view,name='employees-data'),
+    path('dashboard/employee-profile-<int:id>',emp_application_view,name='{{employee.id}}'),
+    path('dashboard/calender',calender_view,name='calender-page'),
+    path('dashboard/attendance-data',attendance_data_view,name="attendance-view"),
+    path('dashboard/attendance-employee',employee_attendance_view,name="attendance-employee"),
+    path('dashboard/attendance-data/<slug:date>',per_date_view),
+    path('dashboard/attendance-employee/<int:empID>',per_emp_attendance_view),
+    path('about',about_view,name='about-page'),
+    path('queries',qna_view,name="qna-page"),
+    path('dashboard/assign-tasks',assign_tasks,name="assign-tasks-page"),
+    path('dashboard/tasks-status',tasks_report,name='tasks-status-page'),
+    path('dashboard/mytasks',check_your_tasks,name="mytasks"),
+    path('raise-complain',complain_view,name='complain-page'),
+    path('test',test_page),
+    path('test2',test_second),
+    path('emp-approve',approve_emp,name='approval'),
+    ]

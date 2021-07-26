@@ -1,0 +1,114 @@
+{%extends 'base.html'%}
+{%block content%}
+<style>
+  .collapsible {
+  
+    color: cornsilk!important;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+ 
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+</style>
+<div class="container qna-container">
+            <h1>General Queries</h1>
+        <!--row starts here have 3 columns-->
+    <div class="row one">
+        <!--card 1-->
+        <div class="col-md-4">
+<button class="collapsible btn btn-dark" >What is this application all about?</button>
+<div class="content">
+  <p>This application is developed for employers to manage their workforce easily. This app allows Human Resources department and 
+      Admins to manage companies employees' attendance and all their data.</p>
+</div>
+        </div>
+        <!--card ends here-->
+        <div class="col-md-4">
+            <button class="collapsible btn btn-dark" >I am a new Employee how will i get my account id and password?</button>
+            <div class="content">
+              <p>First you have to register yourself and fill out all the details on our <a href="{%url 'registration-page'%}">registration page.</a> After that 
+            you have to wait for your approval by admins and after getting aproved your login ID and password will be sent on your registered email.</p>
+            </div>
+                    </div>
+        <div class="col-md-4">
+                    <button class="collapsible btn btn-dark" >I am a registered employee how my attendance will be marked?</button>
+                    <div class="content">
+                        <p>To get your attendance marked everyday you have to <a href="{%url 'login-page'%}">login</a> at your office arrival and when you logout you will be 
+                        mark as present in the system. Your active time will be visible to the admins. </p>
+                    </div>
+                    </div>
+</div>
+
+<div class="row two" style="margin-top:2% ;">
+    <!--card 1-->
+    <div class="col-md-4">
+<button class="collapsible btn btn-dark" >What will happen after i login?</button>
+<div class="content">
+<p>After you login you can access tasks given to you and check all your pasat attendance data to this data.</p>
+</div>
+    </div>
+    <!--card ends here-->
+    <div class="col-md-4">
+        <button class="collapsible btn btn-dark" >Is this site safe</button>
+        <div class="content">
+          <p>Yes your data/informatin is secure with us. Check our <a href="#">Privacy&Policy</a> page.</p>
+        </div>
+                </div>
+    <div class="col-md-4">
+                <button class="collapsible btn btn-dark" >Is this application finished?</button>
+                <div class="content">
+                    <p>Unfortunately No, this application is still in development and more functionalities will be added in future and maybe whole application UI will be updated.To know 
+                        more check or <a href="{%url 'about-page'%}">About</a> page</p>
+                    </p>
+                </div>
+                </div>
+</div>
+
+
+</div>
+{%block footer%}
+
+{%endblock%}
+<div class="footer" style="margin-top:25% ;">
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>Queries</h3>
+                    <ul>
+                        <li><a href="{%url 'qna-page'%}">QnA Page</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="{%url 'about-page'%}">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>EMOS</h3>
+                    <a href="{%url 'home-page'%}" style="text-decoration: none; color: beige;">Home</a>
+                </div>
+            </div>
+            <p class="copyright">Employee Management System © 2021</p>
+        </div>
+    </footer>
+</div>
+{%load static%}
+<script src="{%static 'js/qnascript.js'%}"></script>
+{%endblock%}

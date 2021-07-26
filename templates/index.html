@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%block content%}
+
+<style>
+   
+.form-group{
+    margin:auto;
+    padding: 1%;
+    width:40%;
+}
+h1.title{
+    text-align: center;
+}  
+</style>
+{%load static%}
+<link href="{%static 'css/regpage.css'%}" rel="stylesheet" type="text/css">
+<body>
+    <div class="box">
+            
+            <div class="container-of-reg">
+                <h1 class="title">Employee Registration Page</h1>
+                <div class="form-group">
+                    <form method="POST">
+                        {%csrf_token%}
+                    <label class="label">Name</label>
+                    {{form.Name}}
+                    <div class="error">     
+                    </div>
+                    <label class="label">Email</label>
+                    {{form.Email}}
+                    <div class="errormail">     
+                    </div>
+                    <label class="label">Number</label>
+                    {{form.Phone}}
+                    <div class="errorphone">     
+                    </div>
+                    <label class="label">Gender</label>
+                    {{form.Gender}}
+                    <label class="label">Department</label>
+                    {{form.Department}}
+                    <br>
+                    <label class="label">Address</label>
+                    {{form.Address}}
+                        <input type="submit" value="Register" class="btn btn-success createbtn">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+</body>
+<script src="{%static 'js/regScript.js'%}"></script>
+
+{%endblock%}
+</html>

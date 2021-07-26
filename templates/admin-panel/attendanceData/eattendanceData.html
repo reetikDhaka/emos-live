@@ -1,0 +1,17 @@
+{%extends 'admin-panel/dashboard.html'%}
+
+
+{%block content%}
+<div id="layoutSidenav_content">
+    <table class="table">
+        <thead>
+            <th>Employees</th>
+        </thead>
+    {%for employee in employees%}
+   <tr>
+    <td><a href="attendance-employee/{{employee.id}}">{{employee.employee.Name}}</a></td>
+    </tr>
+    {%endfor%}
+    </table>
+</div>
+{%endblock%}

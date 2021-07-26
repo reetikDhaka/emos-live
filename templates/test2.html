@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>test 2</h1>
+    <form method="POST">
+        {%csrf_token%}
+        <input type="submit" value="mark your attendance">
+    </form>
+    {%if atten.attendance%}
+    <h1>marked</h1>
+    {%endif%}
+</body>
+<script>
+    let today = new Date()
+    let date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()
+    let time = today.getHours()+':' + today.getMinutes()
+    console.log(date)
+    console.log(time)
+
+</script>
+</html>

@@ -1,0 +1,34 @@
+{%extends 'admin-panel/dashboard.html'%}
+
+{%block content%}
+<div id="layoutSidenav_content">
+    <div class="container">
+        <h2>Registered Employees</h2>
+        <table class="table table-bordered" id="datatablesSimple">
+            <thead>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Phone</th>
+            </thead>
+            <tbody>
+                {%for employee in emp%}
+                <tr>
+                    {%if employee.employee.Department in hr%}
+                    <td>{{employee.employee.Name}} <span class="badge rounded-pill bg-primary" ><i class="fa fa-check "></i></span></td>
+                    {%else%}
+                    <td>{{employee.employee.Name}}</td>
+                    {%endif%}
+                    
+                    <td>{{employee.employee.Department}}</td>
+                    <td>{{employee.employee.Phone}}</td>
+                    <td><a class="btn btn-info" href="employee-profile-{{employee.id}}">View Profile</a></td>
+
+                </tr>
+
+                {%endfor%}
+            </tbody>
+        </table>
+       
+    </div>
+</div>
+{%endblock%}

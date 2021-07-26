@@ -1,0 +1,50 @@
+{%extends 'admin-panel/dashboard.html'%}
+{%block content%}
+<div id="layoutSidenav_content">
+    <div class="container">
+        <div class="row justify-content-between greet-row">
+            <div class="col-md-4 greetings-col">
+              <h4 class="greetings text-secondary"></h4>
+            </div>
+          <div class="col-md-2 date-col" >
+              <h4 class="text-secondary">Today</h4>
+              <h5 class="date text-secondary"></h5>
+          </div>
+        </div>
+        <div class="h-100 row align-items-center">
+           
+            <div class="col-md-10" style="background:rgba(176, 205, 241, 0.466)">
+                <h4 class="user-name text-secondary" style="text-align: center;">Assign Tasks</h4>
+                <form method="POST">
+                    {%csrf_token%}
+                   <label class="form-label">Employee</label>
+                    {{form.employee}}
+                    <label class="form-label">Task</label>
+                    {{form.task_assignment}}
+                
+                   
+                    <input class="btn btn-primary" value="Publish" type="submit">
+                </form>
+            </div>
+        </div>
+        {% if form.errors %}
+        <!-- Error messaging -->
+        <div id="errors">
+            <div class="inner">
+                <p>There were some errors in the information you entered. Please correct the following:</p>
+                {{ form.non_field_errors }}
+                <ul>
+                    {% for field in form %}
+                        {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <!-- /Error messaging -->
+    {% endif %}
+    <a href="{%url 'tasks-status-page'%}" style="text-decoration: none;">Check Already Assigned Tasks</a>
+    </div>  
+</div>
+{%load static%}
+<script src="{%static 'js/userpage.js'%}"></script>
+{%endblock%}

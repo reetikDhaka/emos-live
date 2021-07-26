@@ -1,0 +1,16 @@
+{%extends 'admin-panel/dashboard.html'%}
+
+{%block content%}
+<div id="layoutSidenav_content">
+    <table class="table">
+        <thead>
+            <th>Date</th>
+        </thead>
+    {%for date in dates%}
+   <tr>
+    <td><a href="attendance-data/{{date}}">{{date.dates}}</a></td>
+    </tr>
+    {%endfor%}
+    </table>
+</div>
+{%endblock%}

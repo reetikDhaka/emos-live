@@ -1,0 +1,34 @@
+{%extends 'user-panel/dashboard.html'%}
+{%block content%}
+<div id="layoutSidenav_content">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-8">{%for task in tasks%}
+            <div class="card text-center">
+                <div class="card-header">
+                  Today's Assign Tasks
+                </div>
+                <div class="card-body">
+                 <p class="task" style="font-size:large;">{{task.task_assignment}}</p>
+                </div>
+                <div class="card-footer text-muted">
+                    <label class="form-label">Your Report</label>
+                    <br>
+                    {%if task.task_status%}
+                    {{task.task_status}}
+                    {%else%}
+                  <form method="POST">
+                      {%csrf_token%}
+                      
+                      <textarea rows=8 class="form-control" name='report' id='report'>
+                          </textarea>
+                      <input type="submit" class="btn btn-primary" value="submit">
+                  </form>
+                  {%endif%}
+                </div>
+              </div>
+              {%endfor%}
+          </div>
+      </div>
+</div>
+{%endblock%}

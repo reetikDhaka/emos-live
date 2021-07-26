@@ -1,0 +1,85 @@
+{%extends 'admin-panel/dashboard.html'%}
+
+{%block content%}
+{%load static%}
+<style>
+    body{
+        background-color: rgba(198, 198, 202, 0.473);
+    }
+    .container{
+        margin-top:1%;
+    }
+    .area1{
+        margin:auto;
+        display: block;
+        padding: 1%;
+    }
+    .main{
+        font-size: x-large;
+        padding: 1%;
+    }
+    .element{
+        margin-bottom: 1%;
+    
+       
+    }
+</style>
+<div id="layoutSidenav_content">
+   <div class="container">
+       <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img class="profile-image" src="{%static 'images/profile.png'%}" style="width:60%;height:70%; margin: auto; display: block;">
+                <div class="card-content area1">
+                    
+                    <div class="area" style="text-align: center;">
+                        <h4 class="emp-name">{{emp.employee.Name}}</h4>
+                        <p class="description">{{emp.employee.Department}}</p>
+                        <p class="description">{{emp.employee.empID}}</p>
+                    </div>
+                    <a class="btn btn-primary" href="attendance-employee/{{emp.id}}">Attendance</a>
+                    <a href ="https://mail.google.com/mail/u/0/#inbox?compose=new"class="btn btn-secondary">Send Mail</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card main" >
+               <div class="row element">
+                   <div class="col-sm-3" >
+                       Name
+                   </div>
+                   <div class="col-sm-3 text-secondary">
+                    {{emp.employee.Name}}
+                </div>
+               </div>
+               <div class="row element">
+                <div class="col-sm-3">
+                    Phone
+                </div>
+                <div class="col-sm-3 text-secondary">
+                 {{emp.employee.Phone}}
+             </div>
+            </div>
+            <div class="row element">
+                <div class="col-sm-3">
+                    Email
+                </div>
+                <div class="col-sm-6 text-secondary">
+                 {{emp.employee.Email}}
+             </div>
+            </div>
+            <div class="row element">
+                <div class="col-sm-3">
+                    Address
+                </div>
+                <div class="col-sm-3 text-secondary">
+                 {{emp.employee.Address}}
+             </div>
+            </div>
+            </div>
+        </div>
+       </div>
+       </div>
+   </div>
+</div>
+{%endblock%}
