@@ -22,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-s=w13wmwju*0%#c7xii-f7lvyiyjaim%#ns2__+dmis$$@jw37'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+DEBUG = False
+
+ALLOWED_HOSTS = ['127.0.0.1',".herokuapp.com",'emoslive.herokuapp.com']
 
 
 # Application definition
